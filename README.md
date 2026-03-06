@@ -32,19 +32,24 @@ QuantumStack/
 ├── obj/                # Auto-generated object files
 └── Makefile            # Advanced build system with dependency tracking
 
-#include "QMS_Stack.h"
+#include "QMSApi.h"
 
-int main() {
-    // 1. Initialize the stack
-    QMS_Stack *myStack = QMS_Stack_Create();
-
-    // 2. Push data dynamically
-    QMS_Push(myStack, 0xDEADBEEF);
-
-    // 3. Pop data
-    uint32_t val = QMS_Pop(myStack);
-
-    // 4. Clean up
-    QMS_Stack_Destroy(myStack);
-    return 0;
+int main()
+{
+    QMSStack_t QMSStack;
+    uint32_t QMSOpResult = 0;
+    uint32_t StackData = 0;
+    QMC_InitalizePool(); //Initialize the Qmalloc list pool
+    QMSOpResult = QMS_InitStack(&QMSStack);
+    if(FALSE == QMSOpResult)
+    {
+        printf("Stack Init Error\n");
+    }
+    QMSOpResult = QMS_StackPush(&QMSStack,12);
+    if(FALSE == QMSOpResult)
+    {
+        printf("Stack Push Error\n");
+    }
+    QMSOpResult = QMS_StackPop(&QMSStack,&StackData);
+    printf("Popped Data = %d\n",StackData);
 }
