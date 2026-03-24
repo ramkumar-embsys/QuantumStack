@@ -1,6 +1,6 @@
 # 🚀 QuantumStack (QMS)
 
-**QuantumStack** is a lightweight, deterministic, and dynamic stack implementation engineered for resource-constrained embedded environments. 
+**QuantumStack** QuantumStack is a high-performance stack implementation that reconciles dynamic memory flexibility with the strict determinism required by embedded real-time systems 
 
 Most embedded stacks are "static"—they occupy a fixed chunk of RAM regardless of use. **QuantumStack** breaks this limitation by using **Qmalloc**, a custom Free-List memory allocator, allowing the stack to grow and shrink dynamically while maintaining the predictability required for real-time systems.
 
